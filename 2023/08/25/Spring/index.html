@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon_1.png">
+  <link rel="icon" href="/img/favicon_1_win.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Wdttee">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Introduction to Spring Framework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring">
+<meta property="og:url" content="http://wdtte.github.io/2023/08/25/Spring/index.html">
+<meta property="og:site_name" content="Wdte‘s Blog">
+<meta property="og:description" content="Introduction to Spring Framework">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Multithreaded_process.svg/330px-Multithreaded_process.svg.png">
+<meta property="article:published_time" content="2023-08-25T06:36:33.000Z">
+<meta property="article:modified_time" content="2023-08-25T06:39:41.586Z">
+<meta property="article:author" content="Wdttee">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Multithreaded_process.svg/330px-Multithreaded_process.svg.png">
+  
+  
+  <title>Spring - Wdte‘s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"wdtte.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Wdte</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/article_background_1.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Spring">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-08-25 14:36" pubdate>
+        2023年8月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      44 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Spring</h1>
+            
+            <div class="markdown-body">
+              <p>Introduction to Spring Framework </p>
+<span id="more"></span>
+
+<h3 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h3><p>Inversion Of Control，一种编程模式，将<strong>依赖关系的获取和管理转移到了容器或框架中</strong>，从而实现了组件的松耦合。</p>
+<h3 id="ApplicationContext"><a href="#ApplicationContext" class="headerlink" title="ApplicationContext"></a>ApplicationContext</h3><p>就是管理bean的容器，ioc容器。</p>
+<p>两种方式：</p>
+<ul>
+<li><p>xml创建bean</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> +<span class="hljs-attr">一堆命名空间</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">new</span> <span class="hljs-title class_">ClassPathXmlApplicationContex</span>(<span class="hljs-string">&quot;这里面放resources目录下的配置文件路径&quot;</span>).<span class="hljs-keyword">var</span><br><span class="hljs-type">Object</span> <span class="hljs-variable">o</span> <span class="hljs-operator">=</span> context.get(<span class="hljs-string">&quot;beanId&quot;</span>); <span class="hljs-comment">//&lt;T&gt; t = context.getBean(&quot;beanId&quot;,T.class);</span><br><span class="hljs-comment">//这里的实际类型就是bean的实际类型，只是用Object来接收它，所以直接打印调用的是重写的tostring</span><br><span class="hljs-comment">//默认tostring返回 getClass().getName() + &quot;@&quot; + Integer.toHexString(hashCode())，而且默认的hashCode是本地方法，根据对象的实际内存地址得到哈希码（与内容无关），如果没有哈希冲突，这个哈希码可以唯一标识对象。重写的hashCode大多都是根据内容得到哈希码，内容一样的两个对象得到一样的哈希码，比如两个值相同的字符串。</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>配置类创建bean（注解）</p>
+<p><code>@ComponentScan(&quot;&quot;)</code></p>
+<p><code>@Configuration</code> <code>@Bean</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">new</span> <span class="hljs-title class_">AnnotationConfigApplicationContext</span>(T.class).<span class="hljs-keyword">var</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>两种可以混合使用</p>
+<ul>
+<li>在xml中<code>&lt;context:component-scan base-package=&quot;&quot;&gt;</code>或者<code>@ComponentScan(&quot;&quot;)</code>；然后注解创建</li>
+<li>在配置类上<code>@ImportResource(&quot;/.../XXX.xml&quot;)</code>导入配置文件；</li>
+</ul>
+</li>
+<li><p>集合的创建</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">util:list</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;list&quot;</span> <span class="hljs-attr">value-type</span>=<span class="hljs-string">&quot;java.lang.String&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>El1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>El2<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>El3<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">util:list</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">util:set</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;set&quot;</span> <span class="hljs-attr">value-type</span>=<span class="hljs-string">&quot;com.wdte.bean.User&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>wdte<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>liys<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>publishBy<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">util:set</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">util:map</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;map&quot;</span> <span class="hljs-attr">key-type</span>=<span class="hljs-string">&quot;java.lang.String&quot;</span> <span class="hljs-attr">value-type</span>=<span class="hljs-string">&quot;com.wdte.bean.Note&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">entry</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;note-1&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;note1&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">util:map</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这里还需要注册类型转换器把id转成实际的bean</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml">import org.springframework.core.convert.converter.Converter;<br><br>public class StringToUserConverter implements Converter&lt;String, User&gt; &#123;<br>    @Override<br>    public User convert(String source) &#123;<br>        // 在这里执行将字符串转换为User对象的逻辑<br>        // 例如，根据字符串查询数据库获取User对象<br>        // 然后返回User对象<br>    &#125;<br>&#125;<br><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;conversionService&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.context.support.ConversionServiceFactoryBean&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;converters&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">set</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.example.StringToUserConverter&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">set</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="DI"><a href="#DI" class="headerlink" title="DI"></a>DI</h3><p>Dependency Injection，一种特殊的赋值，通过外部的方式将一个对象的依赖关系注入到该对象中，而不是由该对象自己去创建或获取依赖对象。（解耦）</p>
+<ul>
+<li>构造方法注入 <code>&lt;constructor-arg name=&quot;&quot; value=&quot;&quot;/&gt;</code></li>
+<li>setter方法注入（通过外部文件如yaml就是这种方式） <code>&lt;property name=&quot;&quot; value=&quot;&quot;/&gt;</code></li>
+<li>注解注入 <code>@Component</code>，需要开启包扫描<code>@ComponentScan()</code> ||  <code>&lt;context:component-scan base-package=&quot;&quot;&gt;</code></li>
+<li><ul>
+<li>构造方法和setter方法可以混用，因为默认空参构造</li>
+<li>前两种方法的赋值如果传入的不是基本类型，value变ref，引用context中已有的bean</li>
+<li>使用工厂模式的工厂方法创建的bean首先要创建工厂实例，然后用<code>factory-bean=“”</code>传入工厂实例和<code>factory-mothod</code>指定工厂方法，然后嵌套<code>&lt;constructor-arg/&gt;</code>传构造方法参数</li>
+</ul>
+</li>
+</ul>
+<p>bean标签是创建bean，里面嵌套的赋值是DI；自动装配是为了更灵活地DI</p>
+<p>特殊的有集合bean的创建和DI，还需要引入命名空间</p>
+<h3 id="自动装配"><a href="#自动装配" class="headerlink" title="自动装配"></a>自动装配</h3><p>在Spring框架中，自动装配（Autowiring）是一种通过Spring容器自动将组件之间的依赖关系建立起来的机制。通过自动装配，您可以告诉Spring框架，哪些组件需要依赖哪些其他组件，而Spring会在运行时自动将这些依赖关系满足。</p>
+<p>自动装配可以通过注解或XML配置来实现，最常用的方式是使用注解。</p>
+<p>要是没有自动装配，需要用户对每个bean的字段一个一个手动赋值，复杂类型的用ref属性引用已经存在的bean</p>
+<p>有了自动装配，就不用手动赋值了。配置文件的所有自动装配都不能装配简单类型(包括String、Integer…)</p>
+<p><strong>自动装配的类型</strong>：</p>
+<ul>
+<li><p><strong>byName：</strong>在context里面找到<code>beanId</code>和字段名一样的bean并赋值</p>
+<p>​	需要保证<code>beanId</code>唯一性，并且如果有多个类型不一样的bean使用同一个id会类型转换错误</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs xml">    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;publishBy&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.wdte.bean.User&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;publish User&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;18&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;content&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;java.lang.String&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Hello World&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;note1&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.wdte.bean.Note&quot;</span> <span class="hljs-attr">autowire</span>=<span class="hljs-string">&quot;byName&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br><br>@Data<br>@NoArgsConstructor<br>@AllArgsConstructor<br>public class Note &#123;<br>    private Integer id;<br>    private String content;<br>    private User publishBy;<br>&#125;<br>@Data<br>@NoArgsConstructor<br>@AllArgsConstructor<br>public class User &#123;<br>    private String name;<br>    private int age;<br>&#125;<br><br>这里content不会被自动装配<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>byType：</strong>在context里面找到该类型的唯一一个实例并赋值</p>
+<p>要么有一个该类型实例要么没有，没有或者有多个会报错</p>
+</li>
+<li><p><strong>构造方法（constructor）</strong></p>
+<ol>
+<li><p>首先byType再byName</p>
+</li>
+<li><p>使用了autowire&#x3D;”constructor”属性，实例化这个对象的时候就会 根据需要的 DI 在提供的构造方法中<strong>选择合适的构造方法</strong>实例化</p>
+</li>
+<li><p>如果 被选中的构造方法中包含一个找不到的形参（此时context中没有该类型的bean||有多个该类型的bean）就会报错</p>
+</li>
+<li><p>没有被构造方法参数列表包含的字段会被设为字段类型的默认值</p>
+</li>
+</ol>
+</li>
+<li><p><strong>自定义自动装配（custom）</strong>：通过实现<code>BeanFactoryPostProcessor</code>接口，可以自定义自动装配逻辑。</p>
+</li>
+<li><p><strong>无自动装配</strong></p>
+</li>
+</ul>
+<p>对象在实例化的时候就会传参引入依赖，这种做法更保险，但是还是要根据实际需求选择自动装配的方式。</p>
+<p>自动装配简化了Spring应用程序的配置，提高了代码的可维护性和可读性。然而，在使用自动装配时，需要谨慎处理好依赖关系，避免出现不清晰的情况，以确保应用程序的正确性。</p>
+<p><strong>bean在 DI 和 自动装配时的先后顺序</strong></p>
+<p> <code>场景</code> 如果A类中需要 DI 一个B类类型的字段 结果 A在进行DI时 B还没有注入到IOC容器</p>
+<p><code>解决方案</code> Spring 在设计之初考虑到这个问题 会尽可能的分析依赖关系 先从最下层的依赖bean创建并放入IOC容器 然后逐级向上创建对象并进行DI 然而 这并不稳妥 Spring只是尽可能做到这个事情 </p>
+<p>Spring团队也考虑到这个问题 在bean标签上提供了 depends-on 属性 方便我们声明依赖关系 Spring 得到这个依赖关系的树状图后 会先从最底层的bean开始创建并进行DI</p>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h3 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h3><h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><h3 id="循环依赖"><a href="#循环依赖" class="headerlink" title="循环依赖"></a>循环依赖</h3><p>循环依赖（Circular Dependency）是指两个或多个类之间存在相互依赖关系的情况，从而形成了一个闭环。这种情况下，每个类都依赖于另一个类，导致无法在不出现问题的情况下正确地创建这些类的实例。循环依赖可能会导致程序运行时的错误、死锁、性能问题以及代码难以理解和维护。</p>
+<p>在软件开发中，循环依赖是应该避免的，因为它们可能会引发一系列问题。下面是一些关于循环依赖的问题和解决方法：</p>
+<p><strong>问题：</strong></p>
+<ol>
+<li><p><strong>无法正确实例化：</strong> 当两个或多个类互相依赖时，创建它们的实例可能会导致死循环或栈溢出，从而无法成功初始化这些类。</p>
+</li>
+<li><p><strong>不稳定性：</strong> 循环依赖可能导致对象的状态不稳定。因为循环依赖可能会导致对象的构造和初始化过程交织在一起，使得对象的状态在不同步骤中发生变化。</p>
+</li>
+<li><p><strong>难以理解和维护：</strong> 循环依赖会增加代码的复杂性，使代码难以理解和维护。代码中出现循环依赖会使得类之间的关系变得混乱，增加了调试和修改的困难。</p>
+</li>
+</ol>
+<p><strong>解决方法：</strong></p>
+<ol>
+<li><p><strong>设计调整：</strong> 重新考虑类之间的依赖关系，看是否可以进行逻辑上的调整，以减少循环依赖。</p>
+</li>
+<li><p><strong>引入中间层：</strong> 可以考虑引入一个中间层或接口来隔离循环依赖，从而将直接依赖转变为间接依赖。</p>
+</li>
+<li><p><strong>使用延迟初始化：</strong> 在 Spring 等容器中，可以使用延迟初始化（Lazy Initialization）来解决循环依赖问题。容器会在需要时才创建对象，从而避免了循环依赖导致的初始化问题。</p>
+</li>
+<li><p><strong>使用构造函数注入：</strong> 在 Spring 中，使用构造函数注入可以降低循环依赖的风险。构造函数注入在对象创建时就完成了依赖的注入，避免了后续初始化过程中的问题。</p>
+</li>
+</ol>
+<p>总的来说，循环依赖是一种应该尽量避免的情况，因为它会引发一系列问题。在设计和编写代码时，需要注意依赖关系，以确保类之间的依赖关系清晰，避免出现循环依赖。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaEE/">JavaEE</a>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaEE/spring/">spring</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/13/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/">
+                        <span class="hidden-mobile">Java创建线程的四种方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
