@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>注解&amp;反射</title>
+    <link href="/2023/08/26/%E6%B3%A8%E8%A7%A3&amp;%E5%8F%8D%E5%B0%84/"/>
+    <url>/2023/08/26/%E6%B3%A8%E8%A7%A3&amp;%E5%8F%8D%E5%B0%84/</url>
+    
+    <content type="html"><![CDATA[<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="注解和注释"><a href="#注解和注释" class="headerlink" title="注解和注释"></a>注解和注释</h3><p>注释不影响代码 &amp; 注解有一些特定的功能</p><h3 id="预定义注解"><a href="#预定义注解" class="headerlink" title="预定义注解"></a>预定义注解</h3><p><strong><code>@Override</code></strong> <strong><code>@Deprated</code></strong> <strong><code>SuppressWarnings</code></strong></p><h4 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h4><p>用于定义注解的注解</p><p><strong><code>@Target</code></strong>  注解位置</p><p><strong><code>@RetentionPolicy</code></strong> 保留周期</p><p>…</p><h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><ul><li>用元注解创建自定义注解</li><li>作用：存储一个值 XXX.class.getAnnotation().xx();拿到抽象方法返回值，就是这里存储的值。<ul><li>@XXX(a&#x3D;””,b&#x3D;””)</li><li>如果恰好有一个抽象方法名字是value，注解调用的时候就不用写名字</li></ul></li></ul><h3 id="自定义注解和预定义注解的区别"><a href="#自定义注解和预定义注解的区别" class="headerlink" title="自定义注解和预定义注解的区别"></a>自定义注解和预定义注解的区别</h3><p>自定义注解不像预定义注解有一些默认的功能，自定义注解要配合反射使用，往往是在代码中直接定义一些值，这些值将在实际程序运行的时候加载和使用。</p><h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h3><p>反射是用代码操作代码、用面向对象诠释面向对象的一种机制&#x2F;技术。</p><p>面向对象中，所有的对象都有对应的类（除了int、char、byte…）。现在把所有的类都看作对象，那么就有描述类的类，这个类就是<code>java.lang.Class</code></p><h4 id="如何获取Class的对象"><a href="#如何获取Class的对象" class="headerlink" title="如何获取Class的对象"></a>如何获取Class的对象</h4><ul><li>类.class</li><li>对象(指通俗的对象).getClass()</li><li>Class.$forName$(“全限定类名”)</li></ul><h4 id="为什么synchronized锁旗标用当前类-class？"><a href="#为什么synchronized锁旗标用当前类-class？" class="headerlink" title="为什么synchronized锁旗标用当前类.class？"></a>为什么synchronized锁旗标用当前类.class？</h4><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClassDemo2</span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * ClassDemo2.class</span><br><span class="hljs-comment">     */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">a</span><span class="hljs-params">()</span>&#123;<br>        <br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">b</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">synchronized</span>(ClassDemo2.class)&#123;<br>            <br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><img src="https://raw.githubusercontent.com/wdtte/image/main/202308260912055.png" alt="image-20230826091251008" style="zoom:50%;" /><p>把ClassDemo2看作对象，描述它的类是Class，Class的一个对象引用的地址就是这个“对象”的地址，这个“对象”只存在一个，地址只存在一个，所以不管什么时候在哪里以哪种方式获取到的都是同一个字节码对象。</p><h3 id="反射-1"><a href="#反射-1" class="headerlink" title="反射"></a>反射</h3><ul><li>获取内容<ul><li>构造方法</li><li>方法</li><li>字段</li></ul></li><li>创建对象</li><li>执行方法</li></ul><h3 id="暴力反射"><a href="#暴力反射" class="headerlink" title="暴力反射"></a>暴力反射</h3><p>getDeclaredXXX()获取到访问不到的内容（比如private修饰的构造方法、字段、方法）</p><p>但现在拿到了却没有权限使用，设置一下权限 setAccessable(true) </p><p>然后newInstance()、set()、invoke()等</p><h3 id="执行字节码文件里面的方法"><a href="#执行字节码文件里面的方法" class="headerlink" title="执行字节码文件里面的方法"></a>执行字节码文件里面的方法</h3><p>如果只拿到字节码文件，往往没有办法直接运行，用反射可以</p><p>Class.$classforName$(“字节码文件对应的全限定类名”).getXXX().invoke()等</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Javase</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>注解</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Spring</title>
     <link href="/2023/08/25/Spring/"/>
     <url>/2023/08/25/Spring/</url>
