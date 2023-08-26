@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon_1.png">
+  <link rel="icon" href="/img/favicon_1_win.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Wdttee">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="常用Java Api介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Api">
+<meta property="og:url" content="http://wdtte.github.io/2023/08/01/Java%20Api/index.html">
+<meta property="og:site_name" content="Wdte‘s Blog">
+<meta property="og:description" content="常用Java Api介绍">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABGlBMVEX///8BIGD/wAD///3//v8BIGH/vwD///wEI2P8///+wgAAHl8AGFwAIF8AIGIAHF4AAFkAFVwAHWMAElwAC1rg5u+YpL9CVYMADVoABlgADVsAFFzy9PlAU4QAI2AAIGX9xgCyvM4AKmkAE2P+99r//vXo7fIAAF0AGmS8w9NcbpbX3emrtsn84Yv+8cT+7LX9yiT9++n80Eb+45LM0d2Ek7KfrMJOYIl0gaUiO3UXM3LHzd3856L+12v99M7811r70Cf61VL+3Hj86qH78LP64H396qD8zjr++uD+3XL+4ZD998v5ygD+89sxR3v60TUpQXh5iaiJmbK9y9RWZ41odZepsMthcaA8U4gwQX0ALWbT3OBsg6IxR4GGzKwNAAAW2UlEQVR4nO1dB3va2NIWqB11JCGKEaLYsIDcTcdlk5usnd2EC6zJzefs/v+/8c2RkJAAO45jjMXjd0uwaWd05sy80xSCeMMb3vCGN7zhDW9YM1iCJQlq06tYKziO5MhNL2KdYLmT8yN206tYJ0j2Is6fEdT2biPLnsbj/CWxvRJSxEE8Hr9it1dRSeoDH2f4I27TC1kbSOKIZ+LMaWXTC1kbXAn54uWmF7JGYAnj8dOttTUsSBiHg/h5a9WUJc5BwjjPfyC21dhwB4wj4Tt2a9X0wpXwelvVlKucYgmxNd1SLSVPio6Ecf5800tZE8i9mYTxg00vZV1wTCmA+bTplawJ7FV8JuHVppeyJlR+d5WU2VoJXc62tRKCf3jHMNuspRSx9znu4WLTq1kHSOI9w2+3hHvHjL+HB9vIabiruYD8fza9mnXgyFdRkPDLplfz7CC5vc/eKWR45rqyddETd3Lqmxk+zl9t3zG8OY37Ssrj4Gm79pDkTj4zgVPI/M5tWyrq8DgoII+jw62SkPtQDAoIW1ghyG2RkILzdnLB83xgA5ni0RYVSSkSNDQe2sA4c7FVZqZyVgwJCM6Q3yO2pfZE4g0MiRfHRYujTa/r+UCyfwRP4EzG91vk7G+u4ssCbklljcJNCUdhH+EYUub4ZEvMDMuBj4gvCghburclAnLEUXFZQ+NM8RDMT/RFZMHJX/HMongALGDwlRxFcJXDj+eRk5m7PF46gRjHh6C94VfunZ/CK//Y0EKfjKPjFRrqqmj4FB69x5kbJlopDYqrvIuv0FA+fu0bGZYiQT8rf8D2YQGLkRIQ9O565QbGryqEX/flOOLkHJsiXNT/PWLm9a9lJ4gFZA5IgvTb2bibM3gZzwCH4z+dgO5udMk/A/DyK/YPB0wfXSE4kgVrenIwcyU8w0fMyHDn/LKXAFn489kukSSc07Pj+EyRGbCu0QoVzzGLWfbzvx96LyAJ9sxPfDPMuxuOIqMTSZHc0QobA9bkasa1waBwhzNHwuCU4seo5aOOVh1BpnjmBRMsd3Ph6SdYmeI5EbFW2sMVTBvi3XPfVHLncybAAIOLlIaCFJer3ARzeuM+DRZm79QXG7bw+mbDK/5pVICKLkW78fcVx5uTJMee8/OsPs+cnmx6wT+NT/xSwoLhDzA/I5ycN+7vnrO5i4gF+hRLHCydQR6nnLCzI4GsXQa5OM+fbXrFPwuS21uRkAGm7RBRllywsuD/I2RhHHCV6yVHz1yccJR7CNn3ISvLH3HR4jEY5wsGBiT6VKHwRrEswb4PFLchVopio/7JQtoXE1E4nK4VZa/mG8jwzHEkK4d/hD0hOIMjOIKOIBzuMFlQ0ahJyLInC5UJ3guJgIdyB/On4Drwf252sU8Dd8gzoZCJuZiZSiBlh8H9g0CfjeAhJCrvFopLft6edJhO4Hh+PomgGSWIvWLYyhR9MUjiU3BzGT6iVafDBU/4kfMzTjch4SNblDkIycccn8yDooNwSiOKnpAINDbPcDV3Buy7kIWN6jwXZmxBQQIF0JD+8vxpJZp7eHLMhHLcgbbKs5Cv5y+i5upnqByHDhv/cS5h6ITy/FVEZ50q12FzEtDSg3Aj1HX04noH7Ltgw1qcD1iakCnlozvrdBbaQubdXMKzhfz3nwQRSUVd8PjX8/j9fCEsPo5mYzAVGDGIOx7ff+pDOLXBxz+xkeyGOjkOegvm89yvX4ZIG04PH0bxJLLg9kJizOtlldPF2D+So6M42x3axPmsCHexIGA8HsWhPIo7CbdXXvv9v3isOWxOsZ5Gz5qyYZvJF+d9XZcrur4qkZtTZ0kuFAby8fP5U9eLEuLx2OhtIiaggaLFvAWYJD6uKOsfPvxZrxLkl2Iw5309z9N8KS7XM64i6BJJ7iyYFPWbgEmKOF3RnxjBbA1JcEFJ+PfzpxadvhMJsxFqoHEBe3VZDOxVwK+zn5YkZPi/ItZiQjgRw/vgLs2NCfdlcRPBRR5F0pxWTv0SL8/8yZG+OT1aPonvKpHbQ2xsvhQ9Y8PHj93SGoErM9x7ZrFNqngTtXNIYGJDnAc6Ef7y9BB3eS3w7zhT3IvgHgI4p9/QleF98Imbzwt+n49o4pRjL3yvWAx0y5Dc0UI7X1QlJMjKsWcug/ecA0N7vhDsR1VC0MfjuFtL5CGECJKzP+MBWscUI9cP5QO3fs226ZCg5iKy7LvALjKfb6LoDx2Q3OFnR0SGP2YDbh0CrKCEF2w0bamLw6LT3YULTcGN4vwKFY9vDBnZPcQ4dKa2GeYq3Pjkt9zwfPEkkqzNA8ldfnba8ItfQsTl0D+hzAEXudhiAXvXbgEjJMYH3yc+WKBxu4wod5NJkqVe54mtOL2y4ZLvmS/hg3dqc+sarGk07Wb11R5XlmOde2AEb7LDeb1fzMUPpvMoe9JJD3vlfrn3LZ2qrnep963BGRElw+Yi3LLNfcIm5dJr8GKpSnF2CP/L3tf1Bb8nq/XO3a6uaaIiCIKiaLla2iacLv8NgDINw7btJmAwMBfvAsGeFeMQQnhicyfuqAluqbm3LYprtvoxGdEIoZgDhCRZqLWq5Au3wpmDUjvV6na+3SFN1zPJTCaTyC8YBNDEvY+XgTj4nHdt6R/3VxCbncSOJVtSLABaklGmZ7yA7Z2pJDeYdBsjMZtMZnKiAtfaspAlSUhJGA+mXkj2v4wzXHLG3btWspOxkIwQHQtBQkjr2c8u0IrvJ4hqqpEuq7WagixXi1AMyTGkiXJ5tP9wcZf64uwgf0De7+vJRrKmSVpMii0C6R1zDSItwm70FFWMWXA2pNllphUxqZfzrYFdxbH8Q+/GbcIMbkS535CS1VSrkR72a7u6KIRFtJLt5xco9N0kPiM1hfYsAJgDy1Iy+qiR+m4+xgjgJmI8BbQi2+26dH9vObNaanXukjUrICWyssZai8cs0U4qFgpcVNkqJIfj0qOdFU5GHV8SqwjKTLtJv50Rw0ils4EvpKXceL3WtJ2xZDrmX1RQ1N/ybQM/wz3u0h7yxYub+ybxzUG7OzZmP1BA2fDLqhNZ8UWUaaQZq976XDB7WnADJSQM6/jouyt++A4CpAPq8oMTEpJOUg7/4ZrmamnS7Yy0jJ7tLr3T7om0b3Xonb/XIZmHEgqffOluwJpP9VCcCagag1R32smPysBepIIl/NZafB1L2GWp4AmIxM4vCvEgxmrYssmo1x91WiVgM0Bqqg9bcpI0TcP+7nCf5mB/Mh0OR71+WVNV2CJRAM8jx5Kjr0vuFFjgYKfsf6kyXKfTbyvWghsWwA3riWwys1OrDfPdbqrdLgHqJR/4Yb2dak+m3fS3ck3L7SQTgGxGlGUZyYIQo2n4UAkOdU5srDZZ1SHtf6/SXycHh3MYWwCawbIsSdFFTN10+A9ETs6wk4HHOzs7OVFTLBcO4UTOu+cfIyYa9fu+uJ2Zn4zyva96Dkz0RQnd00HTEnb/2B7IMYmmVzwryfAsbJsceGL+UFYTnb+pe0OHr9m5hOjrGgUkuUZStlYK+XQgKabp/WnzITq7P5dQk1NrlJAlyHEt5DB+HZqo9tP7jpG639lMdvzX07F1EjdMqeqjbE6gH1jyT0BQMwmUBifvuNL7p52rvUCgYa1TS10xS1OkC3IhZsWeJigds+gCHEtdR51W+8cUhSRKybneCP3v65YQvrKZutV0VUO0/IAg9wpI07KYy8j5cRtnBIgfpb1JghoV/MOPhNH6Ayh8XDi73hqCG8xpiiIosdgPzyaKOfkWRQUvstPvtv+2nXwHRVE/CtspoqVbcwm19MulFcmqXe+m+/1yWdN11YMYBPzo/lLVcxoq93vD7temUX38GvGMYrPmu80YLSeaaxRpGZiJVQ3j79RketsBpJeAf3t7ezsFamcYVXNmMx9/CwWWqObn1ptGSvolonwHOFLwYwPCDmwL5WP5TU4UTT3+rqwk2FHVQl5oIUsQPL1sus0x8/vdaXLUfOIXP5itBwGHQf+LEpMX7zEijUYDiTn46qde2vs1FqJ+M6/OD2EMZRovpqMemp2+LkLgs0M/lQ8/sGTQ5446z2EglGy8dKmq2vlNxa7CKqceqzskyeLshLPh5vdBqZHMrzaOOG1j93QvbYrDl2Tjpds17V7O/Xa1RTzyhsdeMtVsltqtvLqjq1It11q1MyRFNHHSRPI2EP02fvFi4+3uLCEspdvNRx4QzrTr7Um3U85mVQXhkEpG2c5KImYjzVdR2oo9/aQ/GbZmeddXy9aGjfGkNABvvlJfOdNogmTjRnpUTiaSuhigtAiphTbmLmEJ6gU/xyahu8Rw8CJCBcASrQSak6mYIOo5BfVH+XTnttHodqcOug3AbSedH/bKsqrruijQciG2AGSJnWZQz0mSa9UELCDOssEl0FIvbkQBTS2Qq5UgZJAk4J6iqNTUnBqAqGEqB09JMQFeQ9OLBQmpQCNRbwXNiP0tN6+siXLX2MyNzYOm/JcAh9FCWS92B2s0KIuugBaydK3z4grqwe7XEPoFGWdnET6BvkNKduJ9rjlJSG6eChWSaFrH4zibEjGfkH9FRCdTR8uyls0mRhNjpofNfBIVsIhITfTaAzdbvhkBgXN87Wlg7pH08+kpZEFYW5CFWuHurlFvNr0sKJfSVAuUli4IaNpca5HicTC/9u5EQbIev5WSs3MxsSaohdEwP/5eDcWLrd9kS1a0Wm9YN6mfCLPWBKw+lD3t9LO6qjhnkl55MlHMyaE6SgnRcCa5W853pi3bxAeMxM7Bc4ZUI5vLonRjn+Nm+anNSuih2m5NRwUdPGLMAvsqSbNEOAiE08G0hR8pOfCHhbs8UIN2qXrP0kmz1Uq9At1cAA5pOWBjqW6+J9dymczuPI+R0zO6mtNQb5ieTtpf6wPDrfWSq7n6K9myRZAszqfgxZlVu+nSs/8BmfkfbFcr9XX/70ETTpvPSrBtvPd2niT1Gu8fRVFObiLUX0HiNNrmlvTMcMrRsH8mGeme3wdRHexPGt86ht/79Ii6d2QAQgwmoyz4CyHbeJylwApMseRivPRqYbbEXTchJj6yLEQSntHcuEd/DIxOFllOAUP89uhblHFmdb/bmGwi6PtJwEHrZPxUAyr3u6WBbczbozxS4plZ1jTsQWncK2t6RtWShVSVePU3+GzuBroXkCxoBYTS3dR+fQCi2lUwsE7626wazUGpPU6XC4Wa5ATBKIYKtdHglVtfjmhn/FwGDcRTtiTZEiDKr4mi3C+P0t/SOJHRyA/LtVpNFQVLpoHFIUnCWQEIMLLT18fRguCIVMZayru4KUAaybSiaG71SVFkNLsMC6R8pwzHkXy1veoEUU8i6VeK3hKyMqPU63UcQNaGwlPL3e6eSoUYvZt/zaq6n0DWYqvUz+2ibFmZ9GsenkkltYIl/FiSe2EhVZ/8+Hs2BpKo32Wfmo6CvUe5hDatb/bWAyQuGHm1Fwpn6MG37acmXdurs6TKNZxZ+pl8lGQhWaJpuYa6pYcPIfVSBJ41TaMJVKuT/tbr9ctIU/Whx7pI4+sIiZosPDohZaECOBJ01ynZP0jGkITdXj+7owy73fg/pxlUUURFUMB+CspOf/bN+BpzRjs/KqiiKgYa3VcCaIGo6uLdqDPB/O6H6VDjLpFem6ml8ISrOUh929V1URYEGidHgZGI+q44Si91S1JGe4qrS3oyo+s50QIvD54E05eYRCPJokUQbUene/lGt2089uQ1C5Z+Z66pRR9MuNFOq2JBpmW3K4hGlrIrdrqtr8ZiSwXpzdPV25PWeHqb/reHgNDouw5UVUS9dGc6bqVK9qMmF2ag2LRmJcZruqkUSbR7WdGyXNaCQL9y2dp03+nWIleUgyicxvDCfCDb9qDutQvX6/OgA97I3pNrWwGzR1tWdh2NQhxFctOE4lXSLYSUWr/bfKFBQLDeWC+5amoEjJbOltbxJSTRDTg6uXDXqb9syFr9Xsr31RgwJjq5jt5nkjRGQqAGqjUI3En4Qq7ZNAapPKoplpNAoMvrsKYcRLdoXq+lrd647qqo0/D1rG7YmZDxR57AVnW/6ckd2Wt4l7OpdQQfIGE2JKEl7v47TdWrz23VyMA4l1FKdTs9NZeT500CMTmZXkt4xRF2cAjQomna0nIZbXTbTdUNk3vGoJXCvRrt1rQzulN3RDyyaVmy10lDF/SuScySXM97RkgzrSyyE9AbBZxcTuuP0t1J3ajiPIz/Buy93IEsb9ApCGLObh1wnFmtAhNsNdK9vrybyQEfEmLYdvvXFeJjodZz6/jgX8x/ys85RQoHo7WzHN3iCidNC0AssXntAbXpTkpN2wZhq6b5o2tsglBVw7CBurcw/+ndleUCLTlDv8ulR2SptX8n5qyOT1Y7QKWe0VuB6nP5ncVxXFdjJQnPVuLnJEwy9ZymIJB2mG5MW5PJfmnfnQaaAT/c39+fpLrdTno06pdlrZYDkqMAhRUEGaIMPPS0BKRmy419zjFDeEH1nmoJI/N56ZvRSUgP5iicSij8KeDiryxrYi7jDjatQDKpq5omy85b6NlA0fJHAo+14NSryWxj4jIZJ/qwu1l4Z+KZPT8oaqoAa3pEkoJGC/3stDccRDtwj9bsgD38eXSsoBTkab3JeX+nHsj3j7ULOmM9d48w7qM3ujVQpx9249OL616QMPTKe4EERRS1QrltY2KPSa4jT3V8p+J+Dwv7xecPMtjq+Fs/pysF0MKYvNSz9aug8SWwYrKkiDldLQ/z/zRn5WLWLQaY9j9Ix87fktX1Tat/bzXyhZ2MqlgrLc8vAUHcmMlk9DuwyinbLWM4G+XcauJ7/TanOoP/ckG5W9Mowqyjd9CeTIco+VtWFyG0FWIx+snCwjvB0siKqGcSiV006rQm7ZLb709SrH+PCcJud/sZBZtaeJNVs17glgrAh+v749tvd3JNxx2HqqYoiiYIgoV7DrECOxF9SBr4hRQTZAFDgX81FXdo1LRCL387TpUGTbsa+NtMSO/scc1xp5ydtSiCGiN9uP60sd/DXHVcdgp8diePh3nL2FEoWs0pvgDjUQNTM7WaqNU0DdekynhqZthxGmpAMKPqEYQ5T3DzeaaRakDcJM4zPlZBv32RyNRpFAlaMw6PZGOWYjSbTfDs++12ahFAAOpNEAhTPKCz3MLnhVpn4cOak04P6YomzSdJEL1b3n/p0saz2mzOIXLNemqa7xV2dU2m5yPCArIUHXU3cI8hozX9JzWZtPcdlDySNhjU4R/D+G7bzqBTCIZtfDfsAcAlc/DGr+3UpNsZ9u6QBs4CZ+dQ2PciK1keDzZRm+pmVT2ZTGaziSz8bwdP3WXw7Wp0gNbr9fqAYSfvwZnzGvV7/VF/V8+peMgbvxn+BEchOl3CwE3xcGLI5qJMAqWas2mpF0YrK2qKFCs48+doAQIeS1QUcQEKBr3w2hXexKkTx4DfFLTWS6W+lkBydqM36suKIAKlk5+V6UBQKAoi6vXGVewgNlZ4I7mqWW3fDvP4jh26jueDfh0CUDc9o/fyw07JmVZkN6GfS7BT43G309MT2SwQHlwThnMFmibjOw1ILu2WPbiUwAk3IMyEUFOAR3cxJZfJZBOJQnraHbcGr6pe6ueRjDo4Q2wXkabnwIhkdCfIFVxIHvBGOdAgmASxktlkRq2V841xqt120+mvr83U6Qn1kvkcbjEFb+BQnvRwCCE9QNY8yDL+GbObfLoxxfQGPEzTnuc/cHd3JLrBHLg3oXFSM3NUHeBnXsEJ+zX8WNe2oD1zOafot55uSffpG97whje84Q1veMMb3vCGN7zhDW9YM/4fSaJU7XKu1ocAAAAASUVORK5CYII=">
+<meta property="article:published_time" content="2023-08-01T04:14:36.000Z">
+<meta property="article:modified_time" content="2023-08-26T04:18:57.950Z">
+<meta property="article:author" content="Wdttee">
+<meta property="article:tag" content="Api">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="data:image/png;base64,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">
+  
+  
+  <title>Java Api - Wdte‘s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"wdtte.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Wdte</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/article_background_1.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Java Api">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-08-01 12:14" pubdate>
+        2023年8月1日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java Api</h1>
+            
+            <div class="markdown-body">
+              <p>常用Java Api介绍</p>
+<span id="more"></span>
+
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><h2 id="java-lang-System"><a href="#java-lang-System" class="headerlink" title="java.lang.System"></a><code>java.lang.System</code></h2><ul>
+<li><code>arraycopy(src,srcPos,des,drsPos,len)</code></li>
+<li><code>currentTimeMillis()</code></li>
+<li><code>exit()</code></li>
+</ul>
+<h2 id="java-util-Arrays"><a href="#java-util-Arrays" class="headerlink" title="java.util.Arrays"></a><code>java.util.Arrays</code></h2><h3 id="APi"><a href="#APi" class="headerlink" title="APi"></a>APi</h3><ul>
+<li><p><strong><code>fill()</code></strong></p>
+<p>全部填充 <code>void fill(T[] arr, T val)</code> 遍历赋值</p>
+<p>部分填充 <code>void fill(T[] arr, from, to , T val)</code> 判断是否下标越界、再遍历赋值</p>
+<p><code>rangeCheck(arr.length,from,to)</code></p>
+</li>
+<li><p><strong><code>toString()</code></strong></p>
+<p>重写<code>Object.toString()</code></p>
+<p>不是空引用、长度不为0，用StringBuilder拼接为[,,,,]字符串</p>
+</li>
+<li><p><strong><code>equals()</code></strong></p>
+<p>和Object的equals()方法没有关系，只是名字一样（这里的equlas是静态的，Object的是非静态的）</p>
+<p><strong>什么内容不可以被继承？还有 静态？内部类？static？final？复习这里！</strong></p>
+<p>全部一样返回true 对于引用类型，首先比较地址（是否一样 是否为空），（再比较长度），地址一样再比较内容</p>
+</li>
+<li><p><strong><code>copyOf()</code></strong></p>
+<p><code>type[] arr = copyOf(type[] original, int newLength)</code> 拷贝指定长度到新创建的一个数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs Java">type[] copy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">type</span>[newLength];<br>System.arrayCopy(original,<span class="hljs-number">0</span>,copy,<span class="hljs-number">0</span>,Math.min(original,newLenth));<br><span class="hljs-keyword">return</span> copy<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>copyOfRange()</code></strong></p>
+<p><code>copyOfRange(type[] original, int from, int to)</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-type">int</span> <span class="hljs-variable">newLength</span> <span class="hljs-operator">=</span> to - from;<br><span class="hljs-keyword">if</span>(newLength &lt; <span class="hljs-number">0</span>)<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IlligalArgumentException</span>(<span class="hljs-string">&quot;...&quot;</span>);<br>type[] copy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">type</span>[newLength];<br>System.arrayCopy(original,from,copy,<span class="hljs-number">0</span>,Math.min(original.length-from,newLength));<br><span class="hljs-keyword">return</span> copy;<br></code></pre></td></tr></table></figure>
+
+<p>比如：original的长度为10，当copyOfRange(original,5,12)时，newLength会大于original.length-from，为了不下标越界所以Math.min()。新数组会长一些</p>
+</li>
+<li><p><strong><code>binarySearch()</code></strong></p>
+</li>
+<li><p><strong><code>stream()</code></strong></p>
+</li>
+<li><p><strong><code>sort()</code></strong></p>
+</li>
+</ul>
+<p><strong>深拷贝？浅拷贝？</strong></p>
+<h3 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h3><p>引用类型的比较</p>
+<p><strong>什么时候用外部 什么时候用内部？</strong></p>
+<p>只有一种比较规则的时候用内部，需要有多种比较规则进行比较就要定义多个外部比较器</p>
+<h4 id="内部比较器"><a href="#内部比较器" class="headerlink" title="内部比较器"></a>内部比较器</h4><p><code>java.long.comparable</code></p>
+<p>实现该接口，实现一个<code>compareTo()</code>方法 将比较的逻辑写在了被比较的类的内部，所以叫内部比较器</p>
+<h4 id="外部比较器"><a href="#外部比较器" class="headerlink" title="外部比较器"></a>外部比较器</h4><p><code>java.util.Comparator</code></p>
+<p>实现该接口，实现一个<code>compare()</code>方法</p>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><p>排序时基于比较的</p>
+<p><code>Arrays.sort()</code>，需要一个比较器，要么内部要么外部，如果单参并且传入的实例的类没有定义相关的内部比较器就会报错。</p>
+<p><code>java.lang.ClassCastException: module.Person cannot be cast to java.lang.Comparable</code></p>
+<h2 id="java-lang-CharSequence"><a href="#java-lang-CharSequence" class="headerlink" title="java.lang.CharSequence"></a>java.lang.CharSequence</h2><p><img src="https://raw.githubusercontent.com/wdtte/image/main/202308211513927.png" srcset="/img/loading.gif" lazyload alt="image-20230821151358855"></p>
+<p><img src="https://raw.githubusercontent.com/wdtte/image/main/202308211515400.png" srcset="/img/loading.gif" lazyload alt="image-20230821151532350"></p>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a><code>String</code></h3><p>value[]</p>
+<p>char类型默认值是空格？还是‘\0’</p>
+<h4 id="多种构造方法："><a href="#多种构造方法：" class="headerlink" title="多种构造方法："></a>多种构造方法：</h4><ul>
+<li><code>String()</code> 没有字符的字符串</li>
+<li><code>String(String s)</code></li>
+<li><code>String(char[] c)</code> 字符数组构建到字符串</li>
+<li><code>String(char[] c, int offset, int count)</code> 字符数组的部分</li>
+<li>… byte[]</li>
+</ul>
+<h4 id="两种方式创建："><a href="#两种方式创建：" class="headerlink" title="两种方式创建："></a>两种方式创建：</h4><ul>
+<li><p>字面量值：将一个值以特定的格式直接定义在代码中</p>
+<p>比如：<code>‘c’</code>, <code>“kkkkk”</code> ,<code>010（八进制）</code></p>
+</li>
+<li><p>构造方法</p>
+</li>
+</ul>
+<p><strong>区别：</strong></p>
+<ul>
+<li><p><strong>字面量：</strong></p>
+<p>因为“hello”第一次被创建的时候是在字符串常量池创建，后续创建的时候会先去常量池找 如果已经存在，就直接引用这个地址，否则再在常量池创建新的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">str2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">str3</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;world&quot;</span>;<br><br>str1 == str2 -&gt; <span class="hljs-literal">true</span><br>str2 == str3 -&gt; <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<img src="https://raw.githubusercontent.com/wdtte/image/main/202308211546184.png" srcset="/img/loading.gif" lazyload alt="image-20230821154651880" style="zoom:33%;" />
+
+<ul>
+<li><p><strong>构造方法：</strong></p>
+<img src="https://raw.githubusercontent.com/wdtte/image/main/202308211559684.png" srcset="/img/loading.gif" lazyload alt="image-20230821155932566" style="zoom:33%;" />
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br><span class="hljs-type">String</span> <span class="hljs-variable">str2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br><span class="hljs-type">String</span> <span class="hljs-variable">str3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;world&quot;</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="Api"><a href="#Api" class="headerlink" title="Api"></a>Api</h4><p><a href="E:\复习\Api\27_API_java.lang.String\资料及素材\java.lang.String.pdf">java.lang.String.pdf</a> </p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>charAt()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>indexOf()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>lastIndexOf()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">…</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><code>equals</code></p>
+<ol>
+<li>比较地址 一样:true 否则false</li>
+<li>地址不一样 检查参数类型是否是String,是String转为String 否则false</li>
+<li>类型正确 比较字符数组长度 不一样:false</li>
+<li>长度一样 逐个元素比较（whilen–遍历） 遇到不一样的:false</li>
+</ol>
+<p>字符串常量，<strong>不可变</strong> <code>private final char value[];</code> 一旦进行修改就是创建了新的实例，以前的没有被引用的实例就会被gc。<strong>final</strong></p>
+<p><img src="https://raw.githubusercontent.com/wdtte/image/main/202308212224142.png" srcset="/img/loading.gif" lazyload alt="image-20230821200823746"></p>
+<h3 id="StringBuillder"><a href="#StringBuillder" class="headerlink" title="StringBuillder"></a><code>StringBuillder</code></h3><p>字符串变量，还有<code>StringBuffer</code></p>
+<p>value[], int count </p>
+<p>value[]没有被final修饰</p>
+<h4 id="多种构造方法"><a href="#多种构造方法" class="headerlink" title="多种构造方法"></a>多种构造方法</h4><ul>
+<li><p><code>StringBuider()</code></p>
+<p>super(16) -&gt; (AbstractStringBuilder) new char[16]</p>
+</li>
+<li><p><code>StringBuilder(int capacity)</code></p>
+<p>super(capacity) -&gt; new char[capacity]</p>
+</li>
+<li><p><code>StringBuilder(String s)</code></p>
+<ul>
+<li>初始化一个容量为16+s.length()的StringBuilder</li>
+<li>将字符串append进去</li>
+</ul>
+</li>
+</ul>
+<p>为什么return this？方便多次拼接 级联调用 （返回的是同一个地址）</p>
+<p>所以</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br><span class="hljs-type">StringBuilder</span> <span class="hljs-variable">append</span> <span class="hljs-operator">=</span> sb.append(<span class="hljs-string">&quot;hello&quot;</span>).append(<span class="hljs-string">&quot; &quot;</span>).append(<span class="hljs-string">&quot;world&quot;</span>);<br><span class="hljs-type">boolean</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> sb == append; <span class="hljs-comment">//b=true</span><br></code></pre></td></tr></table></figure>
+
+
+<ul>
+<li><code>StringBuilder(Charsquence c)</code></li>
+</ul>
+<h4 id="Api-1"><a href="#Api-1" class="headerlink" title="Api"></a>Api</h4><ul>
+<li>追加</li>
+<li>插入</li>
+<li>delete()</li>
+<li>。。。</li>
+</ul>
+<h4 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h4><ul>
+<li><p>通过构造方法<code>StringBuilder(String str)</code>或者<code>StringBuilder(Charsequence c)</code>创建时，初始容量（capacity、value.length）是16+str.length() 或 16+c.length()</p>
+</li>
+<li><p>通过无参构造方法创建的StringBuilder的初始容量（capacity、value.length()）是16，或者用另外一个单参构造方法指定初始容量后；在每次调用append(String str)方法追加字符串时，如果容量足够容纳增加后的字符串，不会扩容，如果不够，将会扩大到<strong>原来容量</strong>的两倍再加2（jdk8是value.length&lt;&lt;1+2，左移一位再加2）</p>
+<p>会经历以下步骤：</p>
+<ul>
+<li><p>super.append(str);return this; </p>
+<p>在AbstractStringBuilder中，append方法：</p>
+<ul>
+<li><p>if(str &#x3D;&#x3D; null) return appendNull();</p>
+</li>
+<li><p>int len &#x3D; str.length()</p>
+</li>
+<li><p>ensureCapacityInternal(len + count)</p>
+<p>ensureCapacityInternal(minCapacity)方法：</p>
+<ul>
+<li><p>if(minCapacity - value.length &gt; 0)value &#x3D; Arrays.copyOf(value,newCapacity(minCapacity));</p>
+<p>newCapacity()方法：</p>
+<ul>
+<li>newCapacity &#x3D; (<strong>value.length</strong> &lt;&lt; 1) + 2; &#x2F;&#x2F;位运算，(依次向左移动一位)相当于*2然后+2 这样效率更高。。。还有一些实现省略了</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>str.getChars(0,len,value,count)</p>
+<p>getChars(srcBegin,srcEnd,des,desBegin)方法：</p>
+<ul>
+<li>如果srcBegin&lt;0, srcBegin&gt;srcEnd, srcEnd&gt;len 引发对应的异常</li>
+<li>System.arraycopy(value,0,des,count,srcEnd-srcBegin)      [这里的value是String类的value]</li>
+</ul>
+</li>
+<li><p>count+&#x3D;len</p>
+</li>
+<li><p>return this;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>什么时候使用StringBuilder什么时候String？</strong></p>
+<p>高频率拼接，比如在一个for循环里面，使用StringBuilder</p>
+<p>Object.toString()使用的String，Arrays.toString使用的StringBuilder</p>
+<h2 id="JDK8时间"><a href="#JDK8时间" class="headerlink" title="JDK8时间"></a><code>JDK8时间</code></h2><p>不用java.util.Date…（老版本）</p>
+<p><strong><code>java.time.*</code></strong>     <code>java.time.Year</code>, <code>java.time.YearMonth</code>, <code>java.time.MonthDay</code>, <code>java.time.LocalDate</code> <code>java.time.LocalTime</code> <code>java.time.LocalDateTime</code></p>
+<p>构造方法私有化，不能直接实例化，用<code>now()</code>等方法创建</p>
+<ul>
+<li>static now() 获取当前时间</li>
+<li>static of() 获取指定时间的时间</li>
+<li>atXXX() 拼接</li>
+<li>比较<ul>
+<li>比较器</li>
+<li>isBefore() isAfter() equals</li>
+</ul>
+</li>
+<li>getXXX()</li>
+<li>isLeapYear()</li>
+<li>minusXXX(), plusXXX(), addXXX()</li>
+</ul>
+<h4 id="转换-amp-还原"><a href="#转换-amp-还原" class="headerlink" title="转换&amp;还原"></a>转换&amp;还原</h4><p>format(DateTimeFomatter.ofParttern(),java.time.*)</p>
+<p>parse(str,DateTimeFormatter.ofParttern())</p>
+<p>java.time.* &lt;–&gt; timeMillis</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-type">long</span> <span class="hljs-variable">timeMillis</span> <span class="hljs-operator">=</span> <span class="hljs-number">1629638400L</span>;<br>LocalDateTime.ofInstant(Instant.ofEpochSeconds(timeMillis),ZoneId.systemDefault());<br>Instant是一个精确到纳秒级别的时间点，与时区无关。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-type">LocalDateTime</span> <span class="hljs-variable">localDateTime</span> <span class="hljs-operator">=</span> LocalDateTime.of(<span class="hljs-number">2024</span>,<span class="hljs-number">10</span>,<span class="hljs-number">1</span>,<span class="hljs-number">8</span>,<span class="hljs-number">30</span>,<span class="hljs-number">26</span>);<br><span class="hljs-type">long</span> <span class="hljs-variable">timeMillis</span> <span class="hljs-operator">=</span> localDateTime(localDateTime.atZone(ZoneId.systemDefault()));<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/wdtte/image/main/202308221818070.png" srcset="/img/loading.gif" lazyload alt="image-20220829201947889"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Javase/">Javase</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Api/">Api</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/25/Spring/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Spring</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/13/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/">
+                        <span class="hidden-mobile">Java创建线程的四种方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
